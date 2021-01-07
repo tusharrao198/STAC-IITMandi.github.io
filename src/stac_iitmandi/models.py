@@ -49,7 +49,7 @@ class coordinators(models.Model):
 
 # For Homepage
 class club_activity(models.Model):
-    activity = models.CharField(max_length=50, unique=True)
+    activity = models.CharField(max_length=1000, unique=True)
     content = RichTextField(blank=True, null=True)
     image = models.ImageField(default="default.jpg", upload_to="Homepage/club_activity")
 
@@ -68,7 +68,7 @@ class club_activity(models.Model):
 
 # Zenith
 class zenithEvents(models.Model):
-    name = models.CharField(default="", max_length=50, unique=True)
+    name = models.CharField(default="", max_length=1000, unique=True)
     image = models.ImageField(default="default.jpg", upload_to="Zenith/event_image")
     description = RichTextField(blank=True, null=True)
     problem_statement = models.URLField(default="", blank=True, null=False)
@@ -87,7 +87,7 @@ class zenithEvents(models.Model):
 
 # Utkarsh
 class utkarshEvents(models.Model):
-    name = models.CharField(default="", max_length=50, unique=True)
+    name = models.CharField(max_length=1000, default="", unique=True)
     image = models.ImageField(default="default.jpg", upload_to="Utkarsh/event_image")
     description = RichTextField(blank=True, null=True)
     problem_statement = models.URLField(default="", blank=True, null=False)
@@ -106,7 +106,7 @@ class utkarshEvents(models.Model):
 
 # future projects, competetions and events_intro on homepage in one table #
 class homepage(models.Model):
-    topic = models.CharField(max_length=50, unique=True)
+    topic = models.CharField(max_length=1000, unique=True)
     description = RichTextField(blank=True, null=True)
     image = models.ImageField(default="default.jpg", upload_to="Homepage")
 
@@ -125,8 +125,8 @@ class homepage(models.Model):
 
 # Achievements #
 class achievements(models.Model):
-    achievement = models.CharField(max_length=150, unique=True)
-    link = models.CharField(max_length=150, default="#")
+    achievement = models.CharField(max_length=1000, unique=True)
+    link = models.CharField(max_length=500, default="#")
 
     def __str__(self):
         return self.achievement
@@ -134,7 +134,7 @@ class achievements(models.Model):
 
 # Astrax
 class Astrax(models.Model):
-    name = models.CharField(default="", max_length=50, unique=True)
+    name = models.CharField(default="", max_length=1000, unique=True)
     image = models.ImageField(default="default.jpg", upload_to="Astrax")
     description = RichTextField(blank=True, null=True)
 
@@ -152,7 +152,7 @@ class Astrax(models.Model):
 
 # Pleiades
 class Pleiades(models.Model):
-    name = models.CharField(default="", max_length=50, unique=True)
+    name = models.CharField(default="", max_length=1000, unique=True)
     image = models.ImageField(default="default.jpg", upload_to="Pleiades")
     description = RichTextField(blank=True, null=True)
     problem_statement = models.URLField(default="", blank=True, null=False)
@@ -171,7 +171,7 @@ class Pleiades(models.Model):
 
 # about
 class About(models.Model):
-    content = models.CharField(default="", max_length=50, unique=True)
+    content = models.CharField(default="", max_length=1000, unique=True)
     description = RichTextField(blank=True, null=True)
     image = models.ImageField(default="default.jpg", upload_to="About")
 
@@ -189,7 +189,7 @@ class About(models.Model):
 
 # photogallery
 class photogallery(models.Model):
-    name = models.CharField(default="", max_length=50, unique=True)
+    name = models.CharField(default="", max_length=1000, unique=True)
     image = models.ImageField(default="default.jpg", upload_to="Gallery/Photogallery")
     description = RichTextField(blank=True, null=True)
 
@@ -207,7 +207,7 @@ class photogallery(models.Model):
 
 # videogallery
 class videogallery(models.Model):
-    videoname = models.CharField(default="", max_length=50, unique=True)
+    videoname = models.CharField(default="", max_length=1000, unique=True)
     link = models.URLField(default="#/", blank=True, null=False)
     description = RichTextField(blank=True, null=True)
 
@@ -217,7 +217,7 @@ class videogallery(models.Model):
 
 # Alumni
 class Alumni(models.Model):
-    name = models.CharField(default="", max_length=50, unique=True)
+    name = models.CharField(default="", max_length=1000, unique=True)
     description = RichTextField(blank=True, null=True)
     fb = models.URLField(default="#/", blank=True, null=False)
     insta = models.URLField(default="#/", blank=True, null=False)
@@ -232,14 +232,14 @@ class Alumni(models.Model):
         super().save()
 
         img = Image.open(self.image.path)
-        output_size = (720, 1080)
+        output_size = (720, 1080)   
         img.thumbnail(output_size)
         img.save(self.image.path)
 
 
 # Links to website#
 class Links(models.Model):
-    linkname = models.CharField(max_length=50, unique=True)
+    linkname = models.CharField(max_length=500, unique=True)
     link = models.CharField(max_length=150, default="#/")
 
     def __str__(self):

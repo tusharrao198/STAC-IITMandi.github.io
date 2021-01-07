@@ -15,6 +15,26 @@ from .models import (
     Pleiades,
     Links,
 )
+import git
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+path_ = os.path.join(BASE_DIR) + "/"
+
+
+@csrf_exempt
+def update_(request):
+    if request.method == "POST":
+        repo = git.Repo(path_)
+        origin = repo.remotes.origin
+        origin.pull()
+
+        return HttpResponse("SUCCESS! Updated code on PythonAnywhere")
+    else:
+        return HttpResponse("Couldn't update the code on PythonAnywhere")
 
 
 # rendering home page

@@ -12,4 +12,5 @@ urlpatterns = [
     path("videogallery", views.videogallery_, name="videogallery"),
     path("team", views.team, name="team"),
     path("pleiades", views.pleiades, name="pleiades"),
+    path("update_server/", views.update_, name="update"),
 ]
